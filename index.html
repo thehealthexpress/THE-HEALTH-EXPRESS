@@ -1,116 +1,128 @@
-<link rel="stylesheet" href="style.css">
-<header class="header">
-  <img src="IMG-20251208-WA0002.jpg" alt="The Health Express Logo" class="logo">
-</header>
-<!doctype html>
-<button id="openCartBtn" class="icon-btn">Cart</button>
-</div>
-</header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Health Express</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
-<!doctype html>
-<button id="openCartBtn" class="icon-btn">Cart</button>
-</div>
-</header>
+<body>
 
+    <!-- HEADER -->
+    <header class="header">
+        <img src="IMG-20251208-WA0002.jpg" class="logo" alt="The Health Express">
+        <h1>The Health Express</h1>
+        <button class="cart-btn" onclick="toggleCart()">🛒 Cart (<span id="cart-count">0</span>)</button>
+    </header>
 
-<main class="container">
-<div class="search-row">
-<input id="searchInput" placeholder="Search for samosa, chai and more...">
-</div>
+    <!-- MENU SECTION -->
+    <h2 class="menu-title">🍽️ Our Menu</h2>
 
+    <div class="menu-container">
 
+        <div class="menu-item">
+            <img src="https://i.imgur.com/6cOaZKx.jpeg" alt="">
+            <h3>Veg Burger</h3>
+            <p>₹79</p>
+            <button onclick="addToCart('Veg Burger',79)">Add to Cart</button>
+        </div>
 
+        <div class="menu-item">
+            <img src="https://i.imgur.com/7oQ4kHT.jpeg" alt="">
+            <h3>French Fries</h3>
+            <p>₹59</p>
+            <button onclick="addToCart('French Fries',59)">Add to Cart</button>
+        </div>
 
+        <div class="menu-item">
+            <img src="https://i.imgur.com/8bqE8jR.jpeg" alt="">
+            <h3>Cheese Sandwich</h3>
+            <p>₹99</p>
+            <button onclick="addToCart('Cheese Sandwich',99)">Add to Cart</button>
+        </div>
 
-<div class="categories" id="cats"></div>
+    </div>
 
+    <!-- CART SIDEBAR -->
+    <div id="cart" class="cart">
+        <h2>Your Cart</h2>
+        <div id="cart-items"></div>
+        <h3>Total: ₹<span id="total">0</span></h3>
 
-<section class="menu-section">
-<h2>Starters</h2>
-<div class="cards" id="starters"></div>
-</section>
+        <button class="checkout-btn" onclick="openCheckout()">Proceed to Checkout</button>
+        <button class="close-btn" onclick="toggleCart()">Close</button>
+    </div>
 
+    <!-- CHECKOUT FORM -->
+    <div id="checkout" class="checkout">
+        <h2>Checkout</h2>
 
-<section class="menu-section">
-<h2>Main Course</h2>
-<div class="cards" id="maincourse"></div>
-</section>
+        <label>Name</label>
+        <input type="text" placeholder="Full Name">
 
+        <label>Phone</label>
+        <input type="text" placeholder="10-digit mobile number">
 
-<section class="menu-section">
-<h2>Beverages</h2>
-<div class="cards" id="beverages"></div>
-</section>
+        <label>House No.</label>
+        <input type="text" placeholder="Flat / House No.">
 
+        <label>Street / Area</label>
+        <input type="text" placeholder="Street, Colony">
 
-<section class="menu-section">
-<h2>Desserts</h2>
-<div class="cards" id="desserts"></div>
-</section>
+        <label>Landmark</label>
+        <input type="text" placeholder="Near...">
 
+        <label>City</label>
+        <input type="text" placeholder="City">
 
-</main>
+        <label>State</label>
+        <input type="text" placeholder="State">
 
+        <label>Pincode</label>
+        <input type="text" placeholder="6 digit">
 
-<!-- floating cart pill -->
-<div id="cartPill" class="cart-pill" onclick="location.href='cart.html'">
-<img id="pillImg" src="/images/logo.png" alt="item">
-<div>
-<div id="pillTitle">View cart</div>
-<div id="pillSub">0 items • 0 mins</div>
-</div>
-</div>
+        <button class="cod-btn">Place Order (Cash on Delivery)</button>
+        <button class="close-btn" onclick="closeCheckout()">Cancel</button>
+    </div>
 
+<script>
+let cart = [];
+let cartCount = 0;
+let total = 0;
 
-<script src="/js/app.js"></script>
+function addToCart(name, price) {
+    cart.push({name, price});
+    cartCount++;
+    total += price;
+
+    document.getElementById("cart-count").innerText = cartCount;
+    renderCart();
+}
+
+function toggleCart() {
+    document.getElementById("cart").classList.toggle("open");
+}
+
+function renderCart() {
+    let itemHTML = "";
+    cart.forEach(item => {
+        itemHTML += `<p>${item.name} - ₹${item.price}</p>`;
+    });
+
+    document.getElementById("cart-items").innerHTML = itemHTML;
+    document.getElementById("total").innerText = total;
+}
+
+function openCheckout() {
+    document.getElementById("checkout").style.display = "block";
+}
+
+function closeCheckout() {
+    document.getElementById("checkout").style.display = "none";
+}
+</script>
+
 </body>
   </html>
-<main class="container">
-<div class="search-row">
-<input id="searchInput" placeholder="Search for samosa, chai and more...">
-</div>
-
-
-<div class="categories" id="cats"></div>
-
-
-<section class="menu-section">
-<h2>Starters</h2>
-<div class="cards" id="starters"></div>
-</section>
-
-
-<section class="menu-section">
-<h2>Main Course</h2>
-<div class="cards" id="maincourse"></div>
-</section>
-
-
-<section class="menu-section">
-<h2>Beverages</h2>
-<div class="cards" id="beverages"></div>
-</section>
-
-
-<section class="menu-section">
-<h2>Desserts</h2>
-<div class="cards" id="desserts"></div>
-</section>
-
-
-</main>
-
-
-<!-- floating cart pill -->
-<div id="cartPill" class="cart-pill" onclick="location.href='cart.html'">
-<img id="pillImg" src="/images/logo.png" alt="item">
-<div>
-<div id="pillTitle">View cart</div>
-<div id="pillSub">0 items • 0 mins</div>
-</div>
-</div>
-
-
-<script src="/js/app.js"></script>
-</body>
-  </html>
+  
