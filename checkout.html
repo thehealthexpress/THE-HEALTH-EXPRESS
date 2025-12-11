@@ -1,1 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Checkout – The Health Express</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .box { padding: 15px; border-radius: 10px; background: #f7f7f7; margin-bottom: 20px; }
+    input, select, button {
+      width: 100%; padding: 10px; margin: 8px 0;
+      border-radius: 6px; border: 1px solid #ccc;
+    }
+    button {
+      background: #28a745; color: white; border: none; cursor: pointer;
+    }
+    #error { color: red; font-weight: bold; }
+    #success { color: green; font-weight: bold; }
+  </style>
+</head>
+<body>
 
+<h2>Checkout – Delivery Address</h2>
+
+<div class="box">
+  <label>House No.</label>
+  <input id="house" placeholder="House / Flat No.">
+
+  <label>Street / Landmark</label>
+  <input id="landmark" placeholder="Street, Landmark, Near by">
+
+  <label>City</label>
+  <input id="city" placeholder="City">
+
+  <label>State</label>
+  <input id="state" placeholder="State">
+
+  <label>Pincode</label>
+  <input id="pincode" placeholder="Pincode">
+
+  <button onclick="useMyLocation()">Use My Current Location</button>
+</div>
+
+<button onclick="verifyAddress()">Verify Address</button>
+
+<p id="error"></p>
+<p id="success"></p>
+
+<script>
+// ===============================
+// RESTAURANT FIXED LOCATION
+// ===============================
+const restaurant = {
+  lat: 28.50205,
+  lon: 77.08330
+};
+
+// ===============================
+// Haversine Distance Formula (KM)
+// ===============================
+function distance(lat1, lon1, lat2, lon2) {
+  const R = 6371;
+  const dLat = ((lat2 - lat1) * Math.PI) / 180;
+  const dLon = ((lon2 - lon1) * Math.PI) / 180;
+
+  const a =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(lat1 * Math.PI / 180) *
+    Math.cos(lat2 * Math.PI / 180) *
+    Math.sin(dLon / 2) ** 2;
+
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+// ===============================
+// USE MY CURRENT LOCATION
+// ===============================
+function useMyLocation() {
+  if (!navigator.geolocation) {
+    alert("GPS not supported.");
+    return;
+  }
+
+  navigator.geolocation.getCurrentPosition(async pos => {
+    const lat = pos.coords.latitude;
+    const lon = pos.coords.longitude;
+
+    // Reverse geocode (Open API)
+    const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`;
+
+    const res = await fetch(url);
+    const data = await res.json();
+
+    const addr = data.address;
+
+    document.getElementById("house").value = addr.house_number || "";
+    document.getElementById("landmark").value = addr.road || "";
+    document.getElementById("city").value = addr.city || addr.town || "";
+    document.getElementById("state").value = addr.state || "";
+    document.getElementById("pincode").value = addr.postcode || "";
+
+  });
+}
+
+// ===============================
+// VERIFY FULL ADDRESS
+// ===============================
+async function verifyAddress() {
+
+  const h = document.getElementById("house").value;
+  const lm = document.getElementById("landmark").value;
+  const city = document.getElementById("city").value;
+  const state = document.getElementById("state").value;
+  const pin = document.getElementById("pincode").value;
+
+  const fullAddress = `${h}, ${lm}, ${city}, ${state}, ${pin}, India`;
+
+  const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURI(fullAddress)}`;
+
+  const res = await fetch(url);
+  const data = await res.json();
+
+  if (data.length === 0) {
+    document.getElementById("error").innerText = "Invalid address. Please enter a correct Indian address.";
+    document.getElementById("success").innerText = "";
+    return;
+  }
+
+  const userLat = parseFloat(data[0].lat);
+  const userLon = parseFloat(data[0].lon);
+
+  const km = distance(restaurant.lat, restaurant.lon, userLat, userLon);
+
+  if (km > 6) {
+    document.getElementById("error").innerText =
+      `❌ Sorry! Your location is ${km.toFixed(2)} km away. Unserviceable area.`;
+    document.getElementById("success").innerText = "";
+  } else {
+    document.getElementById("success").innerText =
+      `✅ 
+Order Accepted! Your distance: ${km.toFixed(2)} km`;
+    document.getElementById("error").innerText = "";
+  }
+}
+</script>
+
+</body>
+    </html>
