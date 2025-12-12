@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Health Express</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="nav-left">
+            <img src="images/logo.png" class="logo" alt="Logo" />
+            <h2>The Health Express</h2>
+        </div>
+
+        <nav class="nav-right">
+            <a href="index.html" class="active">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="cart.html">Cart</a>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Fresh • Healthy • Fast Delivery</h1>
+            <p>Your favorite meals delivered in minutes.</p>
+            <a href="menu.html" class="btn">Order Now</a>
+        </div>
+    </section>
+
+    <!-- CATEGORY SECTION -->
+    <section class="categories">
+        <h2>Explore Our Menu</h2>
+
+        <div class="cat-grid">
+
+            <a href="menu.html#meals" class="cat-card">
+                <img src="https://i.imgur.com/WF5hRpD.png" alt="">
+                <p>Meals</p>
+            </a>
+
+            <a href="menu.html#snacks" class="cat-card">
+                <img src="https://i.imgur.com/LZ8wEv5.png" alt="">
+                <p>Snacks</p>
+            </a>
+
+            <a href="menu.html#drinks" class="cat-card">
+                <img src="https://i.imgur.com/j7kJcGy.png" alt="">
+                <p>Beverages</p>
+            </a>
+
+            <a href="menu.html#desserts" class="cat-card">
+                <img src="https://i.imgur.com/kfxePda.png" alt="">
+                <p>Desserts</p>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>© 2025 The Health Express</p>
+    </footer>
+
+</body>
+</html>
