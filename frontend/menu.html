@@ -1,224 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu • The Health Express</title>
-    <link rel="stylesheet" href="css/style.css">
-    <style>
-        .menu-container {
-            max-width: 900px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
-
-        .section-title {
-            font-size: 26px;
-            font-weight: 600;
-            margin: 25px 0 10px 5px;
-        }
-
-        .items-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            gap: 20px;
-        }
-
-        .food-card {
-            background: white;
-            border-radius: 12px;
-            padding: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            border: 1px solid #eee;
-            transition: 0.25s;
-        }
-
-        .food-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .food-card img {
-            width: 100%;
-            height: 155px;
-            object-fit: cover;
-            border-radius: 10px;
-        }
-
-        .food-info {
-            margin-top: 10px;
-        }
-
-        .food-info h3 {
-            font-size: 18px;
-            font-weight: 600;
-        }
-
-        .food-info p {
-            color: #777;
-            font-size: 14px;
-            margin-top: 3px;
-        }
-
-        .price-row {
-            margin-top: 8px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .price {
-            font-size: 18px;
-            font-weight: 700;
-            color: #ff4d4d;
-        }
-
-        .add-btn {
-            padding: 7px 14px;
-            background: #ff4d4d;
-            color: white;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .add-btn:hover {
-            background: #e63939;
-        }
-    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu - The Health Express</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/app.js" defer></script>
 </head>
-
 <body>
-
-    <!-- NAVBAR -->
-    <header class="navbar">
-        <div class="nav-left">
-            <img src="images/logo.png" class="logo">
-            <h2>The Health Express</h2>
-        </div>
-
-        <nav class="nav-right">
-            <a href="index.html">Home</a>
-            <a href="menu.html" class="active">Menu</a>
-            <a href="cart.html">Cart</a>
-        </nav>
-    </header>
-
-
-    <div class="menu-container">
-
-        <!-- MEALS SECTION -->
-        <h2 class="section-title" id="meals">Meals</h2>
-
-        <div class="items-grid">
-
-            <div class="food-card">
-                <img src="https://i.imgur.com/BnLx2uH.jpeg">
-                <div class="food-info">
-                    <h3>Grilled Chicken Meal</h3>
-                    <p>High protein healthy meal.</p>
-                    <div class="price-row">
-                        <span class="price">₹199</span>
-                        <button class="add-btn" onclick="addToCart('Grilled Chicken Meal',199,'https://i.imgur.com/BnLx2uH.jpeg')">Add</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="food-card">
-                <img src="https://i.imgur.com/h0s6Nqz.jpeg">
-                <div class="food-info">
-                    <h3>Paneer Rice Bowl</h3>
-                    <p>Healthy + tasty.</p>
-                    <div class="price-row">
-                        <span class="price">₹149</span>
-                        <button class="add-btn" onclick="addToCart('Paneer Rice Bowl',149,'https://i.imgur.com/h0s6Nqz.jpeg')">Add</button>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-
-        <!-- SNACKS SECTION -->
-        <h2 class="section-title" id="snacks">Snacks</h2>
-
-        <div class="items-grid">
-
-            <div class="food-card">
-                <img src="https://i.imgur.com/mVB9SRe.jpeg">
-                <div class="food-info">
-                    <h3>Veg Roll</h3>
-                    <p>Crispy & fresh.</p>
-                    <div class="price-row">
-                        <span class="price">₹79</span>
-                        <button class="add-btn" onclick="addToCart('Veg Roll',79,'https://i.imgur.com/mVB9SRe.jpeg')">Add</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="food-card">
-                <img src="https://i.imgur.com/nfIq3f0.jpeg">
-                <div class="food-info">
-                    <h3>Chicken Sandwich</h3>
-                    <p>Premium grilled.</p>
-                    <div class="price-row">
-                        <span class="price">₹129</span>
-                        <button class="add-btn" onclick="addToCart('Chicken Sandwich',129,'https://i.imgur.com/nfIq3f0.jpeg')">Add</button>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-
-        <!-- DRINKS SECTION -->
-        <h2 class="section-title" id="drinks">Drinks</h2>
-
-        <div class="items-grid">
-
-            <div class="food-card">
-                <img src="https://i.imgur.com/CxNEtHn.jpeg">
-                <div class="food-info">
-                    <h3>Fresh Lime Soda</h3>
-                    <p>Refreshing.</p>
-                    <div class="price-row">
-                        <span class="price">₹59</span>
-                        <button class="add-btn" onclick="addToCart('Fresh Lime Soda',59,'https://i.imgur.com/CxNEtHn.jpeg')">Add</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="food-card">
-                <img src="https://i.imgur.com/7j9r2kn.jpeg">
-                <div class="food-info">
-                    <h3>Cold Coffee</h3>
-                    <p>Strong & chilled.</p>
-                    <div class="price-row">
-                        <span class="price">₹99</span>
-                        <button class="add-btn" onclick="addToCart('Cold Coffee',99,'https://i.imgur.com/7j9r2kn.jpeg')">Add</button>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
+<header class="navbar">
+    <div class="nav-left">
+        <img src="images/logo.png" class="logo" alt="Logo" />
+        <h2>The Health Express</h2>
     </div>
+    <nav class="nav-right">
+        <a href="index.html">Home</a>
+        <a href="menu.html" class="active">Menu</a>
+        <a href="cart.html">Cart</a>
+    </nav>
+</header>
 
-    <script>
-        function addToCart(name, price, img) {
-            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+<section class="menu-section">
+    <h2 class="menu-title">Our Menu</h2>
+    <div class="menu-grid" id="menu-grid">
+        <!-- JS will inject items here -->
+    </div>
+</section>
 
-            cart.push({
-                name: name,
-                price: price,
-                img: img,
-                qty: 1
-            });
-
-            localStorage.setItem("cart", JSON.stringify(cart));
-            alert("Added to cart!");
-        }
-    </script>
-
+<footer class="footer">
+    <p>© 2025 The Health Express</p>
+</footer>
 </body>
 </html>
+      
