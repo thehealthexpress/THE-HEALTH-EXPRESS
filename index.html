@@ -4,125 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Health Express</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-    <!-- HEADER -->
-    <header class="header">
-        <img src="IMG-20251208-WA0002.jpg" class="logo" alt="The Health Express">
-        <h1>The Health Express</h1>
-        <button class="cart-btn" onclick="toggleCart()">🛒 Cart (<span id="cart-count">0</span>)</button>
+    <!-- HEADER / NAVBAR -->
+    <header class="main-header">
+        <img src="images/logo.png" class="logo" alt="The Health Express Logo">
+        <nav class="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="cart.html">Cart</a>
+        </nav>
     </header>
 
-    <!-- MENU SECTION -->
-    <h2 class="menu-title">🍽️ Our Menu</h2>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <h1>Welcome to The Health Express</h1>
+        <p>Fresh • Healthy • Fast Delivery</p>
+        <a href="menu.html" class="btn-primary">Order Now</a>
+    </section>
 
-    <div class="menu-container">
+    <!-- CATEGORIES SECTION (SWIGGY STYLE) -->
+    <section class="categories">
+        <h2>Explore Menu</h2>
 
-        <div class="menu-item">
-            <img src="https://i.imgur.com/6cOaZKx.jpeg" alt="">
-            <h3>Veg Burger</h3>
-            <p>₹79</p>
-            <button onclick="addToCart('Veg Burger',79)">Add to Cart</button>
+        <div class="cat-grid">
+            <a href="menu.html#meals" class="cat-card">
+                <img src="https://i.imgur.com/w5ZtVfU.png">
+                <p>Meals</p>
+            </a>
+
+            <a href="menu.html#beverages" class="cat-card">
+                <img src="https://i.imgur.com/gkz7oPv.png">
+                <p>Beverages</p>
+            </a>
+
+            <a href="menu.html#snacks" class="cat-card">
+                <img src="https://i.imgur.com/Yq4uWkF.png">
+                <p>Snacks</p>
+            </a>
+
+            <a href="menu.html#sides" class="cat-card">
+                <img src="https://i.imgur.com/OQXlOqz.png">
+                <p>Sides</p>
+            </a>
         </div>
+    </section>
 
-        <div class="menu-item">
-            <img src="https://i.imgur.com/7oQ4kHT.jpeg" alt="">
-            <h3>French Fries</h3>
-            <p>₹59</p>
-            <button onclick="addToCart('French Fries',59)">Add to Cart</button>
-        </div>
-
-        <div class="menu-item">
-            <img src="https://i.imgur.com/8bqE8jR.jpeg" alt="">
-            <h3>Cheese Sandwich</h3>
-            <p>₹99</p>
-            <button onclick="addToCart('Cheese Sandwich',99)">Add to Cart</button>
-        </div>
-
-    </div>
-
-    <!-- CART SIDEBAR -->
-    <div id="cart" class="cart">
-        <h2>Your Cart</h2>
-        <div id="cart-items"></div>
-        <h3>Total: ₹<span id="total">0</span></h3>
-
-        <button class="checkout-btn" onclick="openCheckout()">Proceed to Checkout</button>
-        <button class="close-btn" onclick="toggleCart()">Close</button>
-    </div>
-
-    <!-- CHECKOUT FORM -->
-    <div id="checkout" class="checkout">
-        <h2>Checkout</h2>
-
-        <label>Name</label>
-        <input type="text" placeholder="Full Name">
-
-        <label>Phone</label>
-        <input type="text" placeholder="10-digit mobile number">
-
-        <label>House No.</label>
-        <input type="text" placeholder="Flat / House No.">
-
-        <label>Street / Area</label>
-        <input type="text" placeholder="Street, Colony">
-
-        <label>Landmark</label>
-        <input type="text" placeholder="Near...">
-
-        <label>City</label>
-        <input type="text" placeholder="City">
-
-        <label>State</label>
-        <input type="text" placeholder="State">
-
-        <label>Pincode</label>
-        <input type="text" placeholder="6 digit">
-
-        <button class="cod-btn">Place Order (Cash on Delivery)</button>
-        <button class="close-btn" onclick="closeCheckout()">Cancel</button>
-    </div>
-
-<script>
-let cart = [];
-let cartCount = 0;
-let total = 0;
-
-function addToCart(name, price) {
-    cart.push({name, price});
-    cartCount++;
-    total += price;
-
-    document.getElementById("cart-count").innerText = cartCount;
-    renderCart();
-}
-
-function toggleCart() {
-    document.getElementById("cart").classList.toggle("open");
-}
-
-function renderCart() {
-    let itemHTML = "";
-    cart.forEach(item => {
-        itemHTML += `<p>${item.name} - ₹${item.price}</p>`;
-    });
-
-    document.getElementById("cart-items").innerHTML = itemHTML;
-    document.getElementById("total").innerText = total;
-}
-
-function openCheckout() {
-    document.getElementById("checkout").style.display = "block";
-}
-
-function closeCheckout() {
-    document.getElementById("checkout").style.display = "none";
-}
-</script>
+    <!-- FOOTER -->
+    <footer>
+        <p>The Health Express © 2025</p>
+    </footer>
 
 </body>
-  </html>
-  
+</html>
