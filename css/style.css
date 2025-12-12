@@ -1,228 +1,45 @@
-/* ============================
-   BASIC RESET
-============================ */
+//* Reset some default styles */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* ============================
-   COLORS & VARIABLES
-============================ */
-:root {
-    --theme: #ff4d4d;
-    --dark: #222;
-    --light: #fff;
-    --gray: #777;
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
 }
 
-/* ============================
-   HEADER / NAVBAR
-============================ */
-header.navbar {
-    width: 100%;
-    padding: 15px 30px;
-    background: var(--light);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    position: sticky;
-    top: 0;
-    z-index: 100;
+header {
+  background-color: #28a745;
+  color: white;
+  padding: 20px;
+  text-align: center;
 }
 
-header.navbar .logo {
-    height: 55px;
+header h1 {
+  margin-bottom: 10px;
 }
 
-header.navbar h2 {
-    margin-left: 10px;
-    font-size: 24px;
-    color: var(--dark);
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
-header.navbar nav a {
-    margin-left: 25px;
-    text-decoration: none;
-    color: var(--dark);
-    font-size: 16px;
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
 }
 
-header.navbar nav a:hover,
-header.navbar nav a.active {
-    color: var(--theme);
+nav ul li a:hover {
+  text-decoration: underline;
 }
 
-/* ============================
-   HERO / BANNER
-============================ */
-.hero {
-    width: 100%;
-    height: 350px;
-    background: url("./assets/banner.jpg") center/cover no-repeat;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.hero-text h1 {
-    color: var(--light);
-    background: rgba(0,0,0,0.5);
-    padding: 15px 25px;
-    border-radius: 8px;
-    font-size: 34px;
-    letter-spacing: 1px;
-}
-
-.hero-text p {
-    color: var(--light);
-    margin-top: 10px;
-    font-size: 16px;
-}
-
-.hero-text .btn {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 10px 20px;
-    background: var(--theme);
-    color: var(--light);
-    text-decoration: none;
-    font-weight: 600;
-    border-radius: 6px;
-    transition: background 0.3s;
-}
-
-.hero-text .btn:hover {
-    background: #e63939;
-}
-
-/* ============================
-   CATEGORY SECTION
-============================ */
-.categories {
-    padding: 40px 30px;
-    text-align: center;
-}
-
-.categories h2 {
-    font-size: 28px;
-    font-weight: 600;
-    margin-bottom: 25px;
-}
-
-.cat-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
-    gap: 20px;
-    justify-items: center;
-}
-
-.cat-card {
-    text-decoration: none;
-    color: var(--dark);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: transform 0.3s;
-}
-
-.cat-card img {
-    width: 120px;
-    height: 120px;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-bottom: 10px;
-}
-
-.cat-card p {
-    font-weight: 500;
-}
-
-.cat-card:hover {
-    transform: translateY(-5px);
-    color: var(--theme);
-}
-
-/* ============================
-   MENU SECTION / ITEM CARDS
-============================ */
-.menu-section {
-    padding: 40px 30px;
-}
-
-.menu-title {
-    font-size: 28px;
-    font-weight: 600;
-    margin-bottom: 20px;
-}
-
-.menu-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
-    gap: 20px;
-}
-
-.item-card {
-    border: 1px solid #eee;
-    border-radius: 15px;
-    overflow: hidden;
-    background: var(--light);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-}
-
-.item-card img {
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-}
-
-.item-info {
-    padding: 15px;
-}
-
-.item-info h3 {
-    font-size: 20px;
-    margin-bottom: 5px;
-}
-
-.item-info p {
-    color: var(--gray);
-    font-size: 14px;
-}
-
-.price-add {
-    margin-top: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.item-info button {
-    padding: 8px 14px;
-    border: none;
-    background: var(--theme);
-    color: var(--light);
-    font-weight: 600;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-.item-info button:hover {
-    background: #e63939;
-}
-
-/* ============================
-   FOOTER
-============================
- */
-footer.footer {
-    margin-top: 30px;
-    padding: 20px;
-    background: var(--dark);
-    color: var(--light);
-    text-align: center;
-    font-size: 14px;
+main {
+  padding: 20px;
+  text-align: center;
 }
