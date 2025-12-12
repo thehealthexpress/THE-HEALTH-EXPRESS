@@ -1,70 +1,228 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Health Express</title>
-    <link rel="stylesheet" href="css/style.css" />
-</head>
+/* ============================
+   BASIC RESET
+============================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
 
-<body>
+/* ============================
+   COLORS & VARIABLES
+============================ */
+:root {
+    --theme: #ff4d4d;
+    --dark: #222;
+    --light: #fff;
+    --gray: #777;
+}
 
-    <!-- NAVBAR -->
-    <header class="navbar">
-        <div class="nav-left">
-            <img src="images/logo.png" class="logo" alt="Logo" />
-            <h2>The Health Express</h2>
-        </div>
+/* ============================
+   HEADER / NAVBAR
+============================ */
+header.navbar {
+    width: 100%;
+    padding: 15px 30px;
+    background: var(--light);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
 
-        <nav class="nav-right">
-            <a href="index.html" class="active">Home</a>
-            <a href="menu.html">Menu</a>
-            <a href="cart.html">Cart</a>
-        </nav>
-    </header>
+header.navbar .logo {
+    height: 55px;
+}
 
-    <!-- HERO SECTION -->
-    <section class="hero">
-        <div class="hero-text">
-            <h1>Fresh • Healthy • Fast Delivery</h1>
-            <p>Your favorite meals delivered in minutes.</p>
-            <a href="menu.html" class="btn">Order Now</a>
-        </div>
-    </section>
+header.navbar h2 {
+    margin-left: 10px;
+    font-size: 24px;
+    color: var(--dark);
+}
 
-    <!-- CATEGORY SECTION -->
-    <section class="categories">
-        <h2>Explore Our Menu</h2>
+header.navbar nav a {
+    margin-left: 25px;
+    text-decoration: none;
+    color: var(--dark);
+    font-size: 16px;
+}
 
-        <div class="cat-grid">
+header.navbar nav a:hover,
+header.navbar nav a.active {
+    color: var(--theme);
+}
 
-            <a href="menu.html#meals" class="cat-card">
-                <img src="https://i.imgur.com/WF5hRpD.png" alt="">
-                <p>Meals</p>
-            </a>
+/* ============================
+   HERO / BANNER
+============================ */
+.hero {
+    width: 100%;
+    height: 350px;
+    background: url("./assets/banner.jpg") center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-            <a href="menu.html#snacks" class="cat-card">
-                <img src="https://i.imgur.com/LZ8wEv5.png" alt="">
-                <p>Snacks</p>
-            </a>
+.hero-text h1 {
+    color: var(--light);
+    background: rgba(0,0,0,0.5);
+    padding: 15px 25px;
+    border-radius: 8px;
+    font-size: 34px;
+    letter-spacing: 1px;
+}
 
-            <a href="menu.html#drinks" class="cat-card">
-                <img src="https://i.imgur.com/j7kJcGy.png" alt="">
-                <p>Beverages</p>
-            </a>
+.hero-text p {
+    color: var(--light);
+    margin-top: 10px;
+    font-size: 16px;
+}
 
-            <a href="menu.html#desserts" class="cat-card">
-                <img src="https://i.imgur.com/kfxePda.png" alt="">
-                <p>Desserts</p>
-            </a>
+.hero-text .btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: var(--theme);
+    color: var(--light);
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 6px;
+    transition: background 0.3s;
+}
 
-        </div>
-    </section>
+.hero-text .btn:hover {
+    background: #e63939;
+}
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <p>© 2025 The Health Express</p>
-    </footer>
+/* ============================
+   CATEGORY SECTION
+============================ */
+.categories {
+    padding: 40px 30px;
+    text-align: center;
+}
 
-</body>
-</html>
+.categories h2 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+.cat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+    gap: 20px;
+    justify-items: center;
+}
+
+.cat-card {
+    text-decoration: none;
+    color: var(--dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s;
+}
+
+.cat-card img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.cat-card p {
+    font-weight: 500;
+}
+
+.cat-card:hover {
+    transform: translateY(-5px);
+    color: var(--theme);
+}
+
+/* ============================
+   MENU SECTION / ITEM CARDS
+============================ */
+.menu-section {
+    padding: 40px 30px;
+}
+
+.menu-title {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+    gap: 20px;
+}
+
+.item-card {
+    border: 1px solid #eee;
+    border-radius: 15px;
+    overflow: hidden;
+    background: var(--light);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.item-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+}
+
+.item-info {
+    padding: 15px;
+}
+
+.item-info h3 {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.item-info p {
+    color: var(--gray);
+    font-size: 14px;
+}
+
+.price-add {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.item-info button {
+    padding: 8px 14px;
+    border: none;
+    background: var(--theme);
+    color: var(--light);
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.item-info button:hover {
+    background: #e63939;
+}
+
+/* ============================
+   FOOTER
+============================
+ */
+footer.footer {
+    margin-top: 30px;
+    padding: 20px;
+    background: var(--dark);
+    color: var(--light);
+    text-align: center;
+    font-size: 14px;
+}
