@@ -6,13 +6,7 @@ const menuItemSchema = new mongoose.Schema({
   price: { type: Number, required: true },
   category: String,
   image: String,
-  restaurant: {
-    name: String,
-    lat: Number,
-    lng: Number,
-    rating: Number,
-    deliveryTime: String
-  }
+  // Restaurant fixed: No need for nested object, just use fixed values in code
 });
 
 module.exports = mongoose.model('MenuItem', menuItemSchema);
