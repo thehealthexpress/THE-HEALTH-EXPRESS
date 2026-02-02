@@ -6,7 +6,7 @@ const Header = ({ cartCount }) => {
   return (
     <header className="bg-green-100 shadow-lg sticky top-0 z-10">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <Link to="/" className="text-2xl font-bold text-green-800">FoodieHub</Link>
+        <Link to="/" className="text-2xl font-bold text-green-800">The Health Express</Link>
         <nav className="flex space-x-6">
           <Link to="/" className="text-green-700 hover:text-green-900 transition">Home</Link>
           <Link to="/cart" className="text-green-700 hover:text-green-900 transition flex items-center">
